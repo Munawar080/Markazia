@@ -1,12 +1,14 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
-import { Observable } from 'rxjs';
+import { Observable, Subject } from 'rxjs';
 import { SharedService } from '../../../../../services/shared.service';
+// import { Subject } from 'rxjs-compat';
 @Injectable({
   providedIn: 'root',
 })
 export class TreasuryService {
   apiUrl = this.sharedService.getUrl;
+  pettyCashRequest$ = new Subject<string>();
   constructor(private http: HttpClient, public sharedService: SharedService) {}
 
   GetExpenses(

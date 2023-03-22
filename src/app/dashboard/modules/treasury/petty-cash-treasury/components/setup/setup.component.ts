@@ -40,6 +40,10 @@ export class SetupComponent {
   ngOnInit(): void {
     this.headerService.setTitle('Petty Cash > Petty Cash Request');
     this.GetMainData();
+    this.treasuryService.pettyCashRequest$.subscribe(res => {
+      if(res == 'PettyCashSetup')
+          this.GetMainData();
+    })
   }
   goToPage(type) {
     if (type == 'request') {

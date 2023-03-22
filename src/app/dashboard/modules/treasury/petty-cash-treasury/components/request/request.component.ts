@@ -42,6 +42,11 @@ export class RequestComponent implements OnInit {
 
     // this.GetRegisterPettyCashRequestLast();
     this.GetRegisterPettycashrequest();
+
+    this.treasuryService.pettyCashRequest$.subscribe(response => {
+      if(response == 'PettyCashRequest')
+          this.GetRegisterPettycashrequest();
+    })
   }
 
   Viewdetails(item) {
@@ -143,7 +148,7 @@ export class RequestComponent implements OnInit {
     if (this.sort == 11) {
       this.sort = 1;
     } else {
-      this.sort = this.sort == 10 ? 1 : 10;
+      this.sort = this.sort == 10 ? 11 : 10;
     }
     this.GetRegisterPettycashrequest();
   }
