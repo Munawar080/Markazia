@@ -80,7 +80,7 @@ export class ModalExpenseDetailsComponent {
         console.log(response);
 
         if (response.isSuccess == true) {
-          this.message = 'Reject successfully ';
+          this.message = 'Rejected successfully ';
           setTimeout(() => {
             this.modalService.dismissAll();
             window.location.reload();

@@ -100,3 +100,7 @@ line-height: 22px;
 color: #000000;
 }
 
+.currency-format::after{
+    content: 'JD';
+    display: inline-block;
+}

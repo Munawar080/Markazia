@@ -76,7 +76,7 @@ export class ModalApproveComponent {
     }
 
     const formData = new FormData();
-    formData.append(
+    formData.append( 
       'pettyCashRequestId',
       this.requestDetails.pettyCashRequestId
     );

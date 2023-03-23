@@ -31,7 +31,7 @@
                 <div class="col-md-4">
                   <div class="card-sm">
                     <h4> Amount </h4>
-                    <p> {{expenseDetails?.expenseAmount}} </p>
+                    <p class="currency-format"> {{expenseDetails?.expenseAmount}} </p>
                   </div>
                 </div>
                 <div class="col-md-4">
@@ -43,7 +43,7 @@
                 <div class="col-md-4">
                   <div class="card-sm">
                     <h4> Total Amount </h4>
-                    <p> {{expenseDetails?.expenseTotalAmount}} </p>
+                    <p class="currency-format"> {{expenseDetails?.expenseTotalAmount}} </p>
                   </div>
                 </div>
               </div>
@@ -61,7 +61,7 @@
 
             <div class="col-md-8">
               <div class="form-group mb-3">
-                <label> Attachment * </label>
+                <label> Attachment</label>
                 <br>
               </div>
 
@@ -86,7 +86,7 @@
             </div>
             <div class="col-md-6 my-2" *ngIf="expenseDetails?.statusObj.description == 'Rejected'">
               <div class="card-sm  ">
-                <h4> Reject Reason </h4>
+                <h4>Reason </h4>
                 <div class="note">
                   <p> {{expenseDetails?.rejectionReason}} </p>
                 </div>
@@ -101,7 +101,7 @@
                   <div class="form-check form-check-inline">
                     <input class="form-check-input" type="radio" name="inlineRadioOptions" id="Approved"
                       value="Approved" (change)="chooseType($event)" [(ngModel)]="type">
-                    <label class="form-check-label" for="Approved">Approved</label>
+                    <label class="form-check-label" for="Approved">Approve</label>
                   </div>
                   <div class="form-check form-check-inline">
                     <input class="form-check-input" type="radio" name="inlineRadioOptions" id="Reject" value="Reject"
@@ -113,7 +113,7 @@
                 <div class="row" *ngIf="type == 'Reject'">
                   <div class="col-md-6 my-2">
                     <label for=""> Please Fill the rejection reason </label>
-                    <textarea class="form-control" [(ngModel)]="RejectionReason"></textarea>
+                    <textarea class="form-control" [(ngModel)]="RejectionReason" maxlength="150"></textarea>
                   </div>
 
                 </div>

@@ -9,7 +9,7 @@
         <p> You are about to approve the request of the petty cash for </p>
       </div>
       <div class="card-sm" *ngIf="type == 'reject'">
-        <p> You are about to Reject</p>
+        <p> You are about to reject the request of the petty cash for</p>
       </div>
     </div>
     <div class="col-md-4">
@@ -22,7 +22,7 @@
       <div class="card-sm">
         <h4> Register No. </h4>
         <p> {{requestDetails?.register.registerId}} </p>
-      </div>
+      </div>       
     </div>
     <div class="col-md-4">
       <div class="card-sm">
@@ -40,14 +40,14 @@
         </div>
       </div>
       <div class="card-sm">
-        <p> Register petty cash limit 500 JD </p>
+        <p> Register petty cash limit {{requestDetails?.requestedAmount}} JD </p>
       </div>
     </div>
 
     <div class="col-md-8" *ngIf="type == 'reject'">
       <div class="form-group ">
         <label>Reason </label>
-        <textarea class="form-control" [(ngModel)]="rejectionReason"></textarea>
+        <textarea class="form-control" [(ngModel)]="rejectionReason" maxlength="150"></textarea>
         <div *ngIf="msgError">
           <span class="error py-2"> {{msgError}}</span>
         </div>
