@@ -20,7 +20,7 @@ export class SetupComponent {
   items = [1, 2, 1, 2, 1, 2];
 
   searchText: string = '';
-  sort: number = 1;
+  sort: number = 0;
 
   pageNo: number = 0;
   pagin!: number;
@@ -64,7 +64,7 @@ export class SetupComponent {
 
   GetMainData() {
     return this.treasuryService
-      .GetRegistersPettyCashLimits(this.searchText, this.pageNo)
+      .GetRegistersPettyCashLimits(this.searchText, this.sort)
       .subscribe((response: any) => {
         if (response) {
           this.expenses = response.data;
@@ -91,39 +91,39 @@ export class SetupComponent {
   }
   removeSearch() {
     this.searchText = '';
-    this.sort = 1;
+    this.sort = 0;
     this.GetMainData();
   }
 
   sortByInvoice() {
-    if (this.sort == 3) {
-      this.sort = 1;
+    if (this.sort == 2) {
+      this.sort = 0;
     } else {
-      this.sort = this.sort == 2 ? 3 : 2;
+      this.sort = this.sort == 1 ? 2 : 1;
     }
     this.GetMainData();
   }
   sortByCategory() {
-    if (this.sort == 5) {
-      this.sort = 1;
+    if (this.sort == 4) {
+      this.sort = 0;
     } else {
-      this.sort = this.sort == 4 ? 5 : 4;
+      this.sort = this.sort == 3 ? 4 : 3;
     }
     this.GetMainData();
   }
   sortByRegisterName() {
-    if (this.sort == 7) {
-      this.sort = 1;
+    if (this.sort == 6) {
+      this.sort = 0;
     } else {
-      this.sort = this.sort == 6 ? 7 : 6;
+      this.sort = this.sort == 5 ? 6 : 5;
     }
     this.GetMainData();
   }
   sortByTax() {
-    if (this.sort == 9) {
-      this.sort = 1;
+    if (this.sort == 8) {
+      this.sort = 0;
     } else {
-      this.sort = this.sort == 8 ? 9 : 8;
+      this.sort = this.sort == 7 ? 8 : 7;
     }
     this.GetMainData();
   }

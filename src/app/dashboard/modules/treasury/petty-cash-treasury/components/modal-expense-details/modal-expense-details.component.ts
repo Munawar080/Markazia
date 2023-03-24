@@ -15,6 +15,7 @@ export class ModalExpenseDetailsComponent {
   message: string;
   messageError: string;
   type: string = 'Approved';
+  msgError: string;
   constructor(
     private treasuryService: TreasuryService,
     public activeModal: NgbActiveModal,
@@ -69,6 +70,14 @@ export class ModalExpenseDetailsComponent {
   }
   RejectionReason: string;
   RejectExpense() {
+
+    if (!this.RejectionReason) {
+      this.msgError = ' Reason is required';
+      setTimeout(() => {
+        this.msgError = '';
+      }, 2000);
+      return window.scroll();
+    }
     const formData = new FormData();
     formData.append('ExpenseRecordId', this.expenseDetails.expenseRecordId);
     formData.append('RejectionReason', this.RejectionReason);

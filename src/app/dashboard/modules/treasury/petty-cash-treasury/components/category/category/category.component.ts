@@ -72,6 +72,11 @@ export class CategoryComponent implements OnInit {
     });
   }
   GetExpensesCategories() {
+    if(this.isDeleted){
+      this.sort = 0;
+      this.pageNo = 0;
+      this.isDeleted = false;
+    }
     return this.treasuryService
       .GetExpensesCategories(this.sort, this.pageNo)
       .subscribe((response: any) => {
@@ -174,12 +179,15 @@ export class CategoryComponent implements OnInit {
       this.GetExpensesCategories();
     });
   }
+  isDeleted: boolean;
   openModalDelete(item) {
+    
     const modalRef = this.modalService.open(DeleteCategoryComponent);
     modalRef.componentInstance.expenseDetails = item;
     modalRef.componentInstance.sendtoLoadData.subscribe((result: any) => {
       console.log('resendtoLoadDatasult', result);
       this.modalService.dismissAll();
+      this.isDeleted = true;
       this.GetExpensesCategories();
     });
   }

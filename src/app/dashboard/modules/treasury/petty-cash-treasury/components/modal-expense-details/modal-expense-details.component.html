@@ -117,7 +117,9 @@
                   </div>
 
                 </div>
-
+                <div *ngIf="msgError">
+                  <span class="error py-2"> {{msgError}}</span>
+                </div>
                 <div class="alert alert-danger text-center my-2" role="alert" *ngIf="messageError">
                   {{messageError}}
                 </div>
@@ -136,7 +138,7 @@
                 *ngIf="expenseDetails?.statusObj?.description == 'Pending'">Cancel</button>
               <button type="submit" class="btn btn-save" (click)="submitExpenseAction()"
                 *ngIf="expenseDetails?.statusObj?.description == 'Pending'">
-                submit </button>
+                Submit </button>
 
             </div>
           </div>
