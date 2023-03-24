@@ -139,7 +139,6 @@ export class SetupComponent {
   setPage(page: number) {
     this.pageNo = page;
     this.GetMainData();
-    window.scroll(0, 0);
   }
 
   openMdalEditLimit(item) {

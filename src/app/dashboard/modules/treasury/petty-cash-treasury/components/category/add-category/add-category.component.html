@@ -1,14 +1,20 @@
 <div class="modal-body" *ngIf="!message">
-  <div class="modal-head">
+  <div class="modal-head" *ngIf="expenseDetails == 'item'; else editcategory">
     <h3> Add New Category</h3>
   </div>
+  <ng-template  #editcategory>
+    <div class="modal-head">
+      <h3 class="edit-category"> Edit Category</h3>
+    </div>
+  </ng-template>
   <div class="row">
 
     <div class="col-md-7">
       <div class="form-group ">
         <label>Category Name </label>
         <input name="categoryName" type="text" class="form-control" placeholder="" [(ngModel)]="CategoryName"
-          OnlyCharacter>
+        OnlyCharacter>
+          
         <div *ngIf="msgError">
           <span class="error py-2"> {{msgError}}</span>
         </div>
@@ -26,7 +32,7 @@
       </div>
     </div>
 
-    <br>
+    <br> 
     <br>
     <br>
     <div class="alert alert-danger text-center my-2" role="alert" *ngIf="messageError">
@@ -35,8 +41,12 @@
     <br>
     <div class="btns-group mb-0 mx-0 mt-3">
       <button type="button" class="btn btn-cancel" (click)="activeModal.close('Close click')">Cancel</button>
-      <button type="submit" class="btn btn-save" (click)="submit()"> Add
+      <button type="submit" *ngIf="expenseDetails == 'item'; else editBtn" class="btn btn-save" (click)="submit()"> Add
       </button>
+      <ng-template #editBtn>
+        <button type="submit" class="btn btn-save" (click)="submit()">Save</button>
+        
+      </ng-template>
     </div>
   </div>
 </div>

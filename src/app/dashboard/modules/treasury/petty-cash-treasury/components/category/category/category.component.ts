@@ -21,7 +21,7 @@ export class CategoryComponent implements OnInit {
   items = [1, 2, 1, 2, 1, 2];
 
   searchText: string = '';
-  sort: number = 1;
+  sort: number = 0;
 
   pageNo: number = 0;
   pagin!: number;
@@ -76,6 +76,7 @@ export class CategoryComponent implements OnInit {
       .GetExpensesCategories(this.sort, this.pageNo)
       .subscribe((response: any) => {
         if (response) {
+          // if(response.data.length == 0)
           this.expenses = response.data;
           this.totalRecords = response.info.totalRecordsCount;
           this.pagin = Math.ceil(this.totalRecords / 6);
@@ -105,26 +106,26 @@ export class CategoryComponent implements OnInit {
   }
 
   sortByInvoice() {
-    if (this.sort == 3) {
-      this.sort = 1;
+    if (this.sort == 2) {
+      this.sort = 0;
     } else {
-      this.sort = this.sort == 2 ? 3 : 2;
+      this.sort = this.sort == 1 ? 2 : 1;
     }
     this.GetExpensesCategories();
   }
   sortByCategory() {
-    if (this.sort == 5) {
-      this.sort = 1;
+    if (this.sort == 4) {
+      this.sort = 0;
     } else {
-      this.sort = this.sort == 4 ? 5 : 4;
+      this.sort = this.sort == 3 ? 4 : 3;
     }
     this.GetExpensesCategories();
   }
   sortByIDate() {
-    if (this.sort != 12) {
-      this.sort = 12;
+    if (this.sort == 6) {
+      this.sort = 0;
     } else {
-      this.sort = this.sort == 12 ? 1 : 12;
+      this.sort = this.sort == 5 ? 6 : 5;
     }
     this.GetExpensesCategories();
   }
@@ -148,7 +149,6 @@ export class CategoryComponent implements OnInit {
   setPage(page: number) {
     this.pageNo = page;
     this.GetExpensesCategories();
-    window.scroll(0, 0);
   }
 
   openMdalImage(item) {

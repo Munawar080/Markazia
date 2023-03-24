@@ -28,7 +28,10 @@ export class AddCategoryComponent {
   ) {}
 
   ngOnInit(): void {
-    if (this.expenseDetails) {
+    if(this.expenseDetails == 'item'){
+      this.isStatus = true;
+    }
+    else{
       this.CategoryId = this.expenseDetails.id;
       this.CategoryName = this.expenseDetails.description;
       this.isStatus = this.expenseDetails.status == 2001 ? true : false;

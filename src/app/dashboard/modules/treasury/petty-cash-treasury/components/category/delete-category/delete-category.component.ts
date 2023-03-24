@@ -47,7 +47,7 @@ export class DeleteCategoryComponent {
           setTimeout(() => {
             this.messageError = '';
             // this.modalService.dismissAll();
-          }, 3000);
+          }, 7000);
         }
       });
   }

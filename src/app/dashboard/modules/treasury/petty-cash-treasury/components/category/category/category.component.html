@@ -20,19 +20,19 @@
               <tr>
                 <th scope="col">
                   <button class="btn" [disabled]="expenses?.length == 0" (click)="sortByInvoice()"> Expense Category
-                    <i class="fa-solid fa-arrow-up-long" [class.active]="sort == 2"></i>
-                    <i class="fa-solid fa-arrow-down-long" [class.active]="sort == 3"></i>
+                    <i class="fa-solid fa-arrow-up-long" [class.active]="sort == 1"></i>
+                    <i class="fa-solid fa-arrow-down-long" [class.active]="sort == 2"></i>
                   </button>
                 </th>
                 <th scope="col"> <button class="btn" [disabled]="expenses?.length == 0" (click)="sortByCategory()">
                     Add By
-                    <i class="fa-solid fa-arrow-up-long" [class.active]="sort == 4"></i>
-                    <i class="fa-solid fa-arrow-down-long" [class.active]="sort == 5"></i>
+                    <i class="fa-solid fa-arrow-up-long" [class.active]="sort == 3"></i>
+                    <i class="fa-solid fa-arrow-down-long" [class.active]="sort == 4"></i>
                   </button></th>
                 <th scope="col"> <button class="btn" [disabled]="expenses?.length == 0" (click)="sortByIDate()">
                     Activation
-                    <i class="fa-solid fa-arrow-up-long" [class.active]="sort == 12"></i>
-                    <i class="fa-solid fa-arrow-down-long" [class.active]="sort == 1"></i>
+                    <i class="fa-solid fa-arrow-up-long" [class.active]="sort == 5"></i>
+                    <i class="fa-solid fa-arrow-down-long" [class.active]="sort == 6"></i>
                   </button></th>
                 <th scope="col"> <button class="btn btnin" [disabled]="expenses?.length == 0"> Action </button></th>
               </tr>
