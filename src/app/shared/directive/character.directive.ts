@@ -54,3 +54,9 @@ export class CharacterDirective {
     event.preventDefault();
   }
 }
+export function validateField(value:string) : string{
+  return value.replace(
+    /[^A-Za-zء-ي ]/g,
+    ''
+  );
+}

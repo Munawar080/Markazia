@@ -2,6 +2,7 @@ import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { NgbActiveModal, NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { TreasuryService } from '../../../services/treasury.service';
+import { validateField } from 'src/app/shared/directive/character.directive';
 
 @Component({
   selector: 'app-add-category',
@@ -39,6 +40,7 @@ export class AddCategoryComponent {
   }
 
   submit() {
+    this.CategoryName = validateField(this.CategoryName);
     if (this.CategoryId) {
       this.EditExpenseCategory();
     } else {
@@ -49,7 +51,7 @@ export class AddCategoryComponent {
   msgError: string;
   AddExpenseCategory() {
     if (!this.CategoryName) {
-      this.msgError = ' Category Name is required';
+      this.msgError = 'Category Name is required';
       setTimeout(() => {
         this.msgError = '  ';
       }, 2000);

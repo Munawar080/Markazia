@@ -1,6 +1,7 @@
 import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { NgbActiveModal, NgbModal } from '@ng-bootstrap/ng-bootstrap';
+import { PettyCashService } from 'src/app/dashboard/modules/cashier/petty-cash/services/petty-cash.service';
 import { TreasuryService } from '../../services/treasury.service';
 
 @Component({
@@ -13,17 +14,26 @@ export class ModalApproveComponent {
   @Input() type: any;
   message: string;
   messageError: string;
+  registerPettyCashAmount: any;
+  pettyCashRegisterData: any;
   @Output() sendtoLoadData = new EventEmitter();
 
   constructor(
     private treasuryService: TreasuryService,
+    private pettyCashService: PettyCashService,
     private router: Router,
     private route: ActivatedRoute,
     public activeModal: NgbActiveModal,
     private modalService: NgbModal
   ) {}
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    let registerId = this.requestDetails.register.registerId;
+    this.pettyCashService.GetRegistersPettyCashLimits(registerId).subscribe(response => {
+      this.pettyCashRegisterData = response;
+        this.registerPettyCashAmount = this.pettyCashRegisterData.data[0].pettyCashLimit
+    })
+  }
   amount: any;
   msgError: string;
   ApprovePettyCashRequest() {
