@@ -64,7 +64,7 @@ export class SetupComponent {
 
   GetMainData() {
     return this.treasuryService
-      .GetRegistersPettyCashLimits(this.searchText, this.sort)
+      .GetRegistersPettyCashLimits(this.sort, this.pageNo)
       .subscribe((response: any) => {
         if (response) {
           this.expenses = response.data;
@@ -130,7 +130,7 @@ export class SetupComponent {
 
   sortByAmount() {
     if (this.sort == 10) {
-      this.sort = 1;
+      this.sort = 0;
     } else {
       this.sort = this.sort == 9 ? 10 : 9;
     }

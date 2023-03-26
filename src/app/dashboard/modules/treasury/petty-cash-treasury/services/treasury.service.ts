@@ -130,10 +130,10 @@ export class TreasuryService {
     );
   }
 
-  GetRegistersPettyCashLimits(id: string, pageNo: number) {
+  GetRegistersPettyCashLimits(id: number, pageNo: number) {
     return this.http.get(
       this.apiUrl +
-        `PettyCash/GetRegistersPettyCashLimits?Search=${id}&PageNo=${pageNo}&PageSize=6`,
+        `PettyCash/GetRegistersPettyCashLimits?Search&Sort=${id}&PageNo=${pageNo}&PageSize=6`,
       this.sharedService.getHeaders()
     );
   }
